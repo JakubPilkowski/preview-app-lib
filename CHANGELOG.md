@@ -1,3 +1,13 @@
+## 0.0.4 (2025-07-29)
+
+### 🚀 Features
+
+- add Section1, Section2, and ISection2Child types with new properties
+
+### ❤️ Thank You
+
+- JakubPilkowski
+
 ## 0.0.3 (2025-07-28)
 
 This was a version bump only, there were no code changes.
