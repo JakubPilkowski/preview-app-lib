@@ -1,3 +1,7 @@
+## 2.0.5 (2025-08-04)
+
+This was a version bump only, there were no code changes.
+
 ## 2.0.4 (2025-08-04)
 
 This was a version bump only, there were no code changes.
