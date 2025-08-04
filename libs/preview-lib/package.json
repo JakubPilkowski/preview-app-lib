@@ -1,6 +1,6 @@
 {
   "name": "@preview-workspace/preview-lib",
-  "version": "0.0.21",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
