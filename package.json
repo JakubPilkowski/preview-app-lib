@@ -60,7 +60,8 @@
         "options": {
           "port": 4873,
           "config": ".verdaccio/config.yml",
-          "storage": "tmp/local-registry/storage"
+          "storage": "tmp/local-registry/storage",
+          "clear": false
         }
       }
     },
@@ -73,15 +74,13 @@
         "automaticFromRef": "HEAD~1"
       },
       "releaseTagPattern": "{projectName}@{version}",
-      "preTargetCheck": {
-        "target": "build"
-      },
       "version": {
         "generator": "@nx/js:release-version",
         "generatorOptions": {
           "trackDeps": true,
           "syncVersions": false
-        }
+        },
+        "preVersionCommand": "npx nx run-many -t build"
       },
       "publish": {
         "generator": "@nx/js:release-publish",
