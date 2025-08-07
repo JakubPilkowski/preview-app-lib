@@ -1,12 +1,12 @@
 {
   "name": "@preview-workspace/preview-lib",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
-    "registry": "http://localhost:4873"
+    "registry": "http://ec2-13-53-35-90.eu-north-1.compute.amazonaws.com:4873/"
   },
   "exports": {
     "./package.json": "./package.json",
