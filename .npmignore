@@ -1,0 +1,40 @@
+# Source files (not needed in published package)
+src/
+tsconfig*.json
+vite.config.ts
+eslint.config.mjs
+.prettierrc
+.prettierignore
+
+# Development files
+.verdaccio/
+.npmrc.local
+node_modules/
+.git/
+.github/
+.vscode/
+
+# Build artifacts (keep dist for publishing)
+# dist/ - NOT ignored, needed for publishing
+
+# Logs
+*.log
+error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+*.swp
+*.swo
+
+# Test files
+coverage/
+*.lcov
+.nyc_output
+
+# Temporary files
+tmp/
+.tmp/
