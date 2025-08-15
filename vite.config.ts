@@ -12,6 +12,12 @@ export default defineConfig({
     }),
   ],
   build: {
+    outDir: './dist',
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'PreviewLib',
