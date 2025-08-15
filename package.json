@@ -1,12 +1,45 @@
 {
-  "name": "@preview-workspace/source",
-  "version": "0.0.1",
+  "name": "@preview-workspace/preview-lib",
+  "version": "2.0.8",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "registry": "http://ec2-13-53-35-90.eu-north-1.compute.amazonaws.com:4873/"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "license": "MIT",
   "scripts": {
-    "release": "nx release",
-    "release:dry-run": "nx release --dry-run"
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "publish:major": "npm version major && npm publish",
+    "publish:local": "npm run clean && npm run build && npm publish --registry http://localhost:4873/",
+    "publish:local:patch": "npm version patch && npm run publish:local",
+    "publish:local:minor": "npm version minor && npm run publish:local",
+    "publish:local:major": "npm version major && npm run publish:local",
+    "verdaccio:start": "verdaccio --config .verdaccio/config.yml",
+    "verdaccio:stop": "pkill -f verdaccio"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "react": "19.0.0",
     "react-dom": "19.0.0"
@@ -15,12 +48,6 @@
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "@eslint/js": "^9.8.0",
-    "@nx/eslint": "21.3.8",
-    "@nx/eslint-plugin": "21.3.8",
-    "@nx/js": "^21.3.8",
-    "@nx/react": "21.3.8",
-    "@nx/vite": "21.3.8",
-    "@nx/web": "21.3.8",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -38,7 +65,6 @@
     "eslint-plugin-react-hooks": "5.0.0",
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
-    "nx": "21.3.8",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",
     "typescript": "~5.8.2",
@@ -47,47 +73,5 @@
     "vite": "^6.0.0",
     "vite-plugin-dts": "~4.5.0",
     "vitest": "^3.0.0"
-  },
-  "workspaces": [
-    "packages/*",
-    "libs/*"
-  ],
-  "nx": {
-    "includedScripts": [],
-    "targets": {
-      "local-registry": {
-        "executor": "@nx/js:verdaccio",
-        "options": {
-          "port": 4873,
-          "config": ".verdaccio/config.yml",
-          "storage": "tmp/local-registry/storage",
-          "clear": false
-        }
-      }
-    },
-    "release": {
-      "projects": [
-        "preview-lib"
-      ],
-      "changelog": {
-        "projectChangelogs": true,
-        "automaticFromRef": "HEAD~1"
-      },
-      "releaseTagPattern": "{projectName}@{version}",
-      "version": {
-        "generator": "@nx/js:release-version",
-        "generatorOptions": {
-          "trackDeps": true,
-          "syncVersions": false
-        },
-        "preVersionCommand": "npx nx run-many -t build"
-      },
-      "publish": {
-        "generator": "@nx/js:release-publish",
-        "generatorOptions": {
-          "registry": "http://localhost:4873"
-        }
-      }
-    }
   }
 }
