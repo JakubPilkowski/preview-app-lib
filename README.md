@@ -61,11 +61,13 @@ npm run format
 ### Local Development
 
 Start local Verdaccio registry:
+
 ```bash
 npm run verdaccio:start
 ```
 
 Publish to local registry:
+
 ```bash
 npm run publish:local
 npm run publish:local:patch
@@ -76,6 +78,7 @@ npm run publish:local:major
 ### Production
 
 Publish to production registry:
+
 ```bash
 npm run publish:patch
 npm run publish:minor

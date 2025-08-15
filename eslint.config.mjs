@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import reactHooks from 'eslint-plugin-react-hooks';
 import react from 'eslint-plugin-react';
-import reactJsx from 'eslint-plugin-react/jsx-runtime';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-config-prettier';
@@ -71,10 +70,12 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': (await import('@typescript-eslint/eslint-plugin')).default,
+      '@typescript-eslint': (await import('@typescript-eslint/eslint-plugin'))
+        .default,
     },
     rules: {
-      ...(await import('@typescript-eslint/eslint-plugin')).default.configs.recommended.rules,
+      ...(await import('@typescript-eslint/eslint-plugin')).default.configs
+        .recommended.rules,
     },
   },
 ];
